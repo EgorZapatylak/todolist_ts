@@ -11,7 +11,7 @@ type PropsTodolistType = {
     title: string
     tasks: Array<TaskType>
     removeTask: (taskId: number) => void
-    filteredTask: (value:FilteredValueType) => void
+    filteredTask: (value: FilteredValueType) => void
 
 }
 
@@ -34,9 +34,9 @@ export function Todolist(props: PropsTodolistType) {
                 })}
             </ul>
             <div>
-                <button onClick={()=> (props.filteredTask('all'))}>All</button>
-                <button onClick={()=> (props.filteredTask('active'))}>Active</button>
-                <button onClick={()=> (props.filteredTask('completed'))}>Completed</button>
+                <button onClick={() => (props.filteredTask('all'))}>All</button>
+                <button onClick={() => (props.filteredTask('active'))}>Active</button>
+                <button onClick={() => (props.filteredTask('completed'))}>Completed</button>
             </div>
         </div>
     )
