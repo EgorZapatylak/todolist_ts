@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from "./Todolist";
 
+export type FilteredValueType ='all' | 'active' | 'completed'
+
 function App() {
 
     let [tasks, setTasks] = useState([
@@ -12,7 +14,7 @@ function App() {
         {id: 5, title: "GraphQL", isDone: false},
     ])
 
-    let [filter, setFilter] = useState('all');
+    let [filter, setFilter] = useState<FilteredValueType>('all');
     let tasksForTodoList = tasks
 
     if (filter==='active') {
@@ -34,7 +36,7 @@ function App() {
 
     return (
         <div className="App">
-            <Todolist title="What to learn" tasks={tasksForTodoList} removeTask={removeTask}/>
+            <Todolist title="What to learn" tasks={tasksForTodoList} removeTask={removeTask} filteredTask={filteredTask}/>
         </div>
     );
 }
