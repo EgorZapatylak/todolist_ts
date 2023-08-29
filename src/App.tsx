@@ -4,13 +4,23 @@ import {Todolist} from "./Todolist";
 
 function App() {
 
-    let [tasks,setTasks] = useState([
+    let [tasks, setTasks] = useState([
         {id: 1, title: "HTML&CSS", isDone: true},
         {id: 2, title: "JS", isDone: true},
         {id: 3, title: "ReactJS", isDone: false},
         {id: 4, title: "Reset API", isDone: false},
         {id: 5, title: "GraphQL", isDone: false},
     ])
+
+    let [filter, setFilter] = useState('all');
+    let tasksForTodoList = tasks
+
+    if (filter==='active') {
+        tasksForTodoList=tasks.filter(tasks => tasks.isDone === false)
+    }
+    if (filter==='completed') {
+        tasksForTodoList=tasks.filter(tasks => tasks.isDone === true)
+    }
 
     function removeTask(id: number) {
         let filteredTasks = tasks.filter(task => task.id != id)
@@ -20,7 +30,7 @@ function App() {
 
     return (
         <div className="App">
-            <Todolist title="What to learn" tasks={tasks} removeTask={removeTask}/>
+            <Todolist title="What to learn" tasks={tasksForTodoList} removeTask={removeTask}/>
         </div>
     );
 }

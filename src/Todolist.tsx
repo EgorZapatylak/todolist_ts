@@ -10,6 +10,7 @@ type PropsTodolistType = {
     title: string
     tasks: Array<TaskType>
     removeTask: (taskId: number) => void
+
 }
 
 export function Todolist(props: PropsTodolistType) {
