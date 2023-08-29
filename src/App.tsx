@@ -22,6 +22,10 @@ function App() {
         tasksForTodoList=tasks.filter(tasks => tasks.isDone === true)
     }
 
+    function filteredTask(value: FilteredValueType){
+        setFilter(value)
+    }
+
     function removeTask(id: number) {
         let filteredTasks = tasks.filter(task => task.id != id)
         setTasks(filteredTasks)
