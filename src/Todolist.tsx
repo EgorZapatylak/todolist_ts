@@ -2,7 +2,7 @@ import React from "react";
 import {FilteredValueType} from "./App";
 
 type TaskType = {
-    id: number
+    id: string
     title: string
     isDone: boolean
 }
@@ -10,7 +10,7 @@ type TaskType = {
 type PropsTodolistType = {
     title: string
     tasks: Array<TaskType>
-    removeTask: (taskId: number) => void
+    removeTask: (taskId: string) => void
     filteredTask: (value: FilteredValueType) => void
 
 }
