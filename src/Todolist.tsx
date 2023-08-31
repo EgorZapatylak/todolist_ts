@@ -12,12 +12,12 @@ type PropsTodolistType = {
     tasks: Array<TaskType>
     removeTask: (taskId: string) => void
     filteredTask: (value: FilteredValueType) => void
-    addTask: (title:string)=>void
+    addTask: (title: string) => void
 
 }
 
 export function Todolist(props: PropsTodolistType) {
-    let [title,setTitle]= useState('')
+    let [title, setTitle] = useState('')
 
     const addTask = () => {
         props.addTask(title)
@@ -28,12 +28,14 @@ export function Todolist(props: PropsTodolistType) {
         <div>
             <h3>{props.title}</h3>
             <div>
-                <input value={title} onChange={(event)=>{setTitle(event.currentTarget.value)}}
-                onKeyPress={(event) => {
-                    if (event.key === 'Enter') {
-                        addTask()
-                    }
-                }}/>
+                <input value={title} onChange={(event) => {
+                    setTitle(event.currentTarget.value)
+                }}
+                       onKeyPress={(event) => {
+                           if (event.key === 'Enter') {
+                               addTask()
+                           }
+                       }}/>
                 <button onClick={addTask}>+</button>
             </div>
             <ul>
