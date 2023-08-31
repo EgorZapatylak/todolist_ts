@@ -25,8 +25,8 @@ function App() {
         tasksForTodoList = tasks.filter(tasks => tasks.isDone)
     }
 
-    function addTask() {
-        let task = {id: v1(), title: "New task", isDone: false}
+    function addTask(title:string) {
+        let task = {id: v1(), title: title, isDone: false}
         let newTask = [task, ...tasks]
         setTasks(newTask)
 
