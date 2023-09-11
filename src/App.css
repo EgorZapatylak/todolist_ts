@@ -18,3 +18,7 @@
 .active_filter {
     background-color: bisque;
 }
+
+.isDone_true {
+    opacity: 0.5;
+}
