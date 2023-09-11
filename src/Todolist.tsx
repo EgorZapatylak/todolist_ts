@@ -14,7 +14,7 @@ type PropsTodolistType = {
     filteredTask: (value: FilteredValueType) => void
     addTask: (title: string) => void
     checkStatusTask: (id: string, isDone: boolean) => void
-
+    filter: FilteredValueType
 }
 
 export function Todolist(props: PropsTodolistType) {
@@ -75,9 +75,15 @@ export function Todolist(props: PropsTodolistType) {
                 })}
             </ul>
             <div>
-                <button onClick={onAllClickHandler}>All</button>
-                <button onClick={onActiveClickHandler}>Active</button>
-                <button onClick={onCompletedClickHandler}>Completed</button>
+                <button className={props.filter === 'all' ? 'active_filter' : ''}
+                        onClick={onAllClickHandler}>All
+                </button>
+                <button className={props.filter === 'active' ? 'active_filter' : ''}
+                        onClick={onActiveClickHandler}>Active
+                </button>
+                <button className={props.filter === 'completed' ? 'active_filter' : ''}
+                        onClick={onCompletedClickHandler}>Completed
+                </button>
             </div>
         </div>
     )
