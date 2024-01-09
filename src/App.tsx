@@ -24,20 +24,13 @@ function App() {
     let [todolists, setTodolists] = useState<Array<TodolistsType>>(
         [
             {id: v1(), title: 'What to learn', filter: 'all'},
-            {id: v1(), title: 'What to buy', filter: 'all'},
+            {id: v1(), title: 'What to buy', filter: 'completed'},
         ]
     )
 
 
-    let [filter, setFilter] = useState<FilteredValueType>('all');
-    let tasksForTodoList = tasks
+    // let [filter, setFilter] = useState<FilteredValueType>('all');
 
-    if (filter === 'active') {
-        tasksForTodoList = tasks.filter(tasks => !tasks.isDone)
-    }
-    if (filter === 'completed') {
-        tasksForTodoList = tasks.filter(tasks => tasks.isDone)
-    }
 
     function addTask(title: string) {
         let task = {id: v1(), title: title, isDone: false}
@@ -46,8 +39,8 @@ function App() {
 
     }
 
-    function filteredTask(value: FilteredValueType) {
-        setFilter(value)
+    function filteredTask(todolistID: string, value: FilteredValueType) {
+        setTodolists(todolists.map(el => el.id === todolistID ? {...el, filter: value} : el))
     }
 
     function removeTask(id: string) {
@@ -68,8 +61,17 @@ function App() {
         <div className="App">
             {
                 todolists.map(todolists => {
+                    let tasksForTodoList = tasks
+
+                    if (todolists.filter === 'active') {
+                        tasksForTodoList = tasks.filter(tasks => !tasks.isDone)
+                    }
+                    if (todolists.filter === 'completed') {
+                        tasksForTodoList = tasks.filter(tasks => tasks.isDone)
+                    }
                     return <Todolist
                         key={todolists.id}
+                        todolistID={todolists.id}
                         title={todolists.title}
                         tasks={tasksForTodoList}
                         removeTask={removeTask}
